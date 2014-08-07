@@ -32,8 +32,10 @@ app.use(express.static(path.join(__dirname, 'public')));
 //new code for new app
 // Make our db accessible to our router
 app.use(function (req, res, next) {
+
   req.db = db;
   next();
+
 });
 //modification ended
 
@@ -41,7 +43,7 @@ app.use(function (req, res, next) {
 app.use('/', routes);
 app.use('/users', users);
 
-/// catch 404 and forward to error handler
+///// catch 404 and forward to error handler
 app.use(function(req, res, next) {
     var err = new Error('Not Found');
     err.status = 404;
