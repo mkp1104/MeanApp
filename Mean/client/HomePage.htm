@@ -6,9 +6,6 @@
 
   <link href="css/demo.css" rel="stylesheet" type="text/css" />
   <link href="css/bootstrap3.2.1.min.css" rel="stylesheet" type="text/css" />
-  <script src="bower_components/angular/angular.js" type="text/javascript"></script>
-  <script src="js/app.js" type="text/javascript"></script>
-
 </head>
 <body>
 <div ng-app="validationApp" ng-controller="mainController">
@@ -20,7 +17,7 @@
     <!-- FORM ============================================================== -->
     <!-- =================================================================== -->
   
-    <form name="userForm" ng-submit="submitForm(user)" novalidate>
+    <form name="userForm" ng-submit="submitForm()" novalidate>
 
         <!-- Candidate Name -->
           <div class="form-group" ng-class="{ 'has-error' : userForm.candidatename.$invalid && !userForm.candidatename.$pristine }">
@@ -135,7 +132,7 @@
 				</thead>
 				<tbody>
          
-					<tr  ng-repeat="skill in skills">
+					<tr  ng-repeat="skill in user.skillsReff1">
 					<td>{{skill.name}}</td>
 					<td>
 					    {{skill.jrssrating}}
@@ -192,7 +189,7 @@
         </thead>
         <tbody>
 
-            <tr ng-repeat="skill in skills">
+            <tr ng-repeat="skill in user.skillsReff2">
               <td>{{skill.name}}</td>
               <td>
                   {{skill.jrssrating}}
@@ -342,7 +339,10 @@
 </div>
 </div>
 </div>
- 
+    <script src="bower_components/angular/angular.js" type="text/javascript"></script>
+    <script src="bower_components/angular/angular-resource.js" type="text/javascript"></script>
+    <script src="js1/app.js" type="text/javascript"></script>
+
   <br />
 </body>
 </html>

@@ -7,6 +7,7 @@ mongoose.connect('mongodb://localhost:27017/MeanData'); // connect to our databa
 
 
 var Bear = require('./Model/bear');
+var UserFormData = require('./Model/FormData');
 // call the packages we need
 var express    = require('express')
   , path = require('path')
@@ -60,12 +61,15 @@ router.route('/bears')
 
 // create a bear (accessed at POST http://localhost:8080/api/bears)
 	.post(function (req, res) {
-
+      var userFormData  = new UserFormData();
+      userFormData.userName = req.body.candidatename;
+      userFormData.userProjectName = req.body.projectname;
+      userFormData.userPracticeArea = req.body.practiceArea;
 	  var bear = new Bear(); 		// create a new instance of the Bear model
-	  bear.name = req.body.name;  // set the bears name (comes from the request)
+//	  bear.name = req.body.name;  // set the bears name (comes from the request)
 
 	  // save the bear and check for errors
-	  bear.save(function (err) {
+	  userFormData.save(function (err) {
 	    if (err)
 	      res.send(err);
 
@@ -73,7 +77,7 @@ router.route('/bears')
 	  });
 
 	}).get(function(req, res) {
-		Bear.find(function(err, bears) {
+		userFormData.find(function(err, bears) {
 			if (err)
 				res.send(err);
 
