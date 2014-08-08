@@ -1,9 +1,19 @@
 {
 	"name": "Mean",
+	"private": true,
+  "version": "0.0.0",
+  "description": "A starter project for AngularJSNodeJs",
+	"repository": "https://github.com/mkp1104/MeanApp/tree/master/Mean",
 	"main": "server.js",
 	"dependencies": {
 		"express": "~4.0.0",
+		"colors": "~0.6.0-1",
+		"reload": "0.0.2",
 		"mongoose": "~3.6.13",
 		"body-parser": "~1.0.1"
-	}
+	},
+  "devDependencies": {
+  
+    "superagent": "~0.12.4"
+}
 }
