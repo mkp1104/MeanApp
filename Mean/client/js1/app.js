@@ -16,7 +16,7 @@ var validationApp = angular.module('validationApp', ['ngResource','SaveFormServi
             save: function (user) {
                 return $http({
                     method: "POST",
-                    url: '/bears',
+                    url: '/userForm',
                     data: user
 
                 })
@@ -46,7 +46,7 @@ var validationApp = angular.module('validationApp', ['ngResource','SaveFormServi
 
 validationApp.controller('MSController', function ($scope) {
     $scope.user.skillsReff1 = [];
-    $scope.reff1 = [{}];
+    
     var defaultForm = {
         skillname: "",
         jrssRating: "",
@@ -62,7 +62,7 @@ validationApp.controller('MSController', function ($scope) {
         //	    };
         $scope.user.skillsReff1.push(reff);
         console.log(reff);
-        $scope.user.reff1 = angular.copy(defaultForm);
+        $scope.reff1 = angular.copy(defaultForm);
     }
 
 });
@@ -71,7 +71,7 @@ validationApp.controller('MSController', function ($scope) {
 
 	validationApp.controller('OPController', function ($scope) {
 	    $scope.user.skillsReff2 = [];
-	    $scope.reff1 = [{}];
+	   
 	  var defaultForm = {
 	    skillname: "",
 	    jrssRating: "",
@@ -87,7 +87,7 @@ validationApp.controller('MSController', function ($scope) {
 	    //	    };
 	    $scope.user.skillsReff2.push(reff);
 	    console.log(reff);
-	    $scope.user.reff2 = angular.copy(defaultForm);
+	    $scope.reff2 = angular.copy(defaultForm);
 	  }
 
 	});

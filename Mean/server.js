@@ -24,7 +24,7 @@ app.use(bodyParser());
 //app.use(app.router); 
   app.use(express.static(clientDir)); 
 
-var port = process.env.PORT || 8080; 		// set our port
+var port = process.env.PORT || 8085; 		// set our port
 
 // ROUTES FOR OUR API
 // =============================================================================
@@ -57,31 +57,49 @@ app.get('/', function(req, res) {
 // REGISTER OUR ROUTES -------------------------------
 // all of our routes will be prefixed with /api
 
-router.route('/bears')
+router.route('/userForm')
 
 // create a bear (accessed at POST http://localhost:8080/api/bears)
 	.post(function (req, res) {
-      var userFormData  = new UserFormData();
-      userFormData.userName = req.body.candidatename;
-      userFormData.userProjectName = req.body.projectname;
-      userFormData.userPracticeArea = req.body.practiceArea;
-	  var bear = new Bear(); 		// create a new instance of the Bear model
-//	  bear.name = req.body.name;  // set the bears name (comes from the request)
-
-	  // save the bear and check for errors
+      var userFormData  = new UserFormData(req.body);
+      userFormData.candidatename = req.body.candidatename;
+      userFormData.comments = req.body.comments;
+      userFormData.date = req.body.date;
+      userFormData.interviewername = req.body.interviewername;
+      userFormData.practiceArea = req.body.practiceArea;
+      userFormData.projectname = req.body.projectname;
+      userFormData.requester = req.body.requester;
+      for(var i = 0;i<req.body.skillsReff1.length;i++)
+      {
+      userFormData.skillsReff1[i].interviewrating = req.body.skillsReff1[i].interviewrating;
+      userFormData.skillsReff1[i].jrssrating = req.body.skillsReff1[i].jrssrating;
+      userFormData.skillsReff1[i].name = req.body.skillsReff1[i].name;
+      }
+      for(var i = 0;i<req.body.skillsReff2.length;i++)
+      {
+      userFormData.skillsReff2[i].interviewrating = req.body.skillsReff2[i].interviewrating;
+      userFormData.skillsReff2[i].jrssrating = req.body.skillsReff2[i].jrssrating;
+      userFormData.skillsReff2[i].name = req.body.skillsReff2[i].name;
+      }
+    
+     
+	 
 	  userFormData.save(function (err) {
-	    if (err)
-	      res.send(err);
 
-	    res.json({ message: 'Bear created!' });
+    console.log('Debugger save Method');
+	    if (err) 
+	     res.send(err);
+      console.log('Debugger error Method');
+	    res.json({ message: 'UserFormData created!' });
+      
 	  });
 
 	}).get(function(req, res) {
-		userFormData.find(function(err, bears) {
+		userFormData.find(function(err, userFormData) {
 			if (err)
 				res.send(err);
 
-			res.json(bears);
+			res.json(userFormData);
 		});
 	});
 router.route('/bears/:bear_id')

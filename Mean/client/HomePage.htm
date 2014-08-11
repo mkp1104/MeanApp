@@ -146,12 +146,12 @@
             <tr>
               <td>
                 <div class="form-group"  >
-              <input name="name" type="text" ng-model="user.reff1.name" placeholder="skills" class="form-control" >
+              <input name="name" type="text" ng-model="reff1.name" placeholder="skills" class="form-control" >
               
               </div>
               </td>
               <td>
-                   <select ng-model="user.reff1.jrssrating" class="form-control" >
+                   <select ng-model="reff1.jrssrating" class="form-control" >
                     <option selected>Select</option>
                     <option selected>Aware</option>
                     <option selected>Understanding</option>
@@ -160,7 +160,7 @@
                   </select>
               </td>
               <td>
-                  <select ng-model="user.reff1.interviewrating"  class="form-control"  >
+                  <select ng-model="reff1.interviewrating"  class="form-control"  >
                     <option selected >Select</option>
                     <option selected>Aware</option>
                     <option selected>Understanding</option>
@@ -169,7 +169,7 @@
                   </select></td>
             </tr>
             <tr>
-              <td><button type="button" ng-click="addSkills(user.reff1)" class="btn btn-info">Add One More Skill</button></td>
+              <td><button type="button" ng-click="addSkills(reff1)" class="btn btn-info">Add One More Skill</button></td>
             </tr>
         </tbody>
         </table>
@@ -201,9 +201,9 @@
 
 
             <tr>
-              <td><input type="text" ng-model="user.reff2.name" placeholder="skills" class="form-control" ></td>
+              <td><input type="text" ng-model="reff2.name" placeholder="skills" class="form-control" ></td>
               <td>
-                   <select ng-model="user.reff2.jrssrating" class="form-control" >
+                   <select ng-model="reff2.jrssrating" class="form-control" >
                     <option selected value="select">Select</option>
                     <option selected >Aware</option>
                     <option selected>Understanding</option>
@@ -212,7 +212,7 @@
                   </select>
               </td>
               <td>
-                  <select ng-model="user.reff2.interviewrating" class="form-control" >
+                  <select ng-model="reff2.interviewrating" class="form-control" >
                     <option selected>Select</option>
                     <option selected>Aware</option>
                     <option selected>Understanding</option>
@@ -221,7 +221,7 @@
                   </select></td>
             </tr>
             <tr>
-              <td><button type="button" ng-click="addSkills(user.reff2)" class="btn btn-info">Add One More Skill</button></td>
+              <td><button type="button" ng-click="addSkills(reff2)" class="btn btn-info">Add One More Skill</button></td>
             </tr>
         </tbody>
     </table>
@@ -247,7 +247,7 @@
         
             <div class="form-group">
 				<b> Comments:</b>
-				<textarea required class="form-control" rows="5"></textarea>
+				<textarea ng-model="user.comments" required class="form-control" rows="5"></textarea>
 			</div>
 			<br />
 			
