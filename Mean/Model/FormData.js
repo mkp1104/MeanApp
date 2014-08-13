@@ -4,7 +4,7 @@ var Schema = mongoose.Schema;
 var FormDataSchema = new Schema({
   candidatename: { type: String, required: true },
   comments: { type: String, required: true },
-  date: { type: String, required: true },
+  date: { type: Date, required: true },
   interviewername: { type: String, required: true },
   practiceArea: { type: String, required: true },
   projectname: { type: String, required: true },

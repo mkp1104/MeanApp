@@ -88,10 +88,13 @@ router.route('/userForm')
 
     console.log('Debugger save Method');
 	    if (err) 
+      {
 	     res.send(err);
-      console.log('Debugger error Method');
+      }else{
 	    res.json({ message: 'UserFormData created!' });
-      
+      console.log('Console-log Info: Form submmited!!!');
+     
+      }
 	  });
 
 	}).get(function(req, res) {

@@ -75,4 +75,5 @@ app.use(function(err, req, res, next) {
 });
 
 
-module.exports = app;
+    module.exports = app;
+    console.log('App listening at port 8085');
