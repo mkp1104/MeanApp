@@ -24,7 +24,19 @@ angular.module('SaveFormServices', [])
             console.log('Header'+headers);
             console.log('Config:'+config);
             alert('WoW...!!! You Have Submited Form Data to MongoDB SuccessFull!!!!..Well Done...Keep..It..Up');
-
+		  user.candidatename = null;
+          user.projectname = null;
+          user.practiceArea = null;
+          user.requester = null;
+          user.interviewername = null;
+          user.signature = null;
+          user.date = null;
+          user.skillsReff1 = [];
+          user.skillsReff2 = [];
+          user.comments = null;
+					 
+	//	  user.$setPristine(); 
+					 
 
           }).error(function (data, status, headers, config) {
             console.log('DATA:' + data);
@@ -49,23 +61,16 @@ angular.module('SaveFormServices', [])
         if ($scope.userForm.$valid) {
           console.log($scope.user);
           console.log('Submiting!!!!!!!!!!!');
-
+		console.log("$pristine = " + $scope.userForm.$pristine);
+		$scope.userForm.$setPristine();
           FormService.save($scope.user);
-
-          $scope.user.candidatename = null;
-          $scope.user.projectname = null;
-          $scope.user.practiceArea = null;
-          $scope.user.requester = null;
-          $scope.user.interviewername = null;
-          $scope.user.signature = null;
-          $scope.user.date = null;
-          $scope.user.skillsReff1 = [];
-          $scope.user.skillsReff2 = [];
-          $scope.user.comments = null;
+		 
+        
           
-        }
-
-      };
+        
+	  }
+      }
+		   
     });
 
 validationApp.controller('MSController', function ($scope) {

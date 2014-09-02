@@ -105,7 +105,7 @@ router.route('/userForm')
 			res.json(userFormData);
 		});
 	});
-router.route('/bears/:bear_id')
+/* router.route('/bears/:bear_id')
 
 // get the bear with that id (accessed at GET http://localhost:8080/api/bears/:bear_id)
 	.get(function (req, res) {
@@ -143,7 +143,7 @@ router.route('/bears/:bear_id')
 
 			res.json({ message: 'Successfully deleted' });
 		});
-	});
+	}); */
 
   
 
