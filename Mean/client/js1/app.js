@@ -16,7 +16,7 @@ angular.module('SaveFormServices', [])
         save: function (user) {
           return $http({
             method: "POST",
-            url: '/userForm',
+            url: 'api/userForm',
             data: user
           }).success(function (data, status, headers, config) {
             console.log('DATA:'+ data);
@@ -24,6 +24,22 @@ angular.module('SaveFormServices', [])
             console.log('Header'+headers);
             console.log('Config:'+config);
             alert('WoW...!!! You Have Submited Form Data to MongoDB SuccessFull!!!!..Well Done...Keep..It..Up');
+			alert('calling callback function()-GET....' + $http({
+		method:'GET',
+		url:'api/getAllUserFormData'
+		
+		}).success(function (data, status, headers, config) {
+            console.log('DATA:'+ data);
+            console.log('status:'+status);
+            console.log('Header'+headers);
+            console.log('Config:'+config);
+			alert('DATA:' + data);
+			}).error(function (data, status, headers, config) {
+            console.log('DATA:' + data);
+            console.log('status:' + status);
+            console.log('Header' + headers);
+            console.log('Config:' + config);
+          }))
 		  user.candidatename = null;
           user.projectname = null;
           user.practiceArea = null;
@@ -45,7 +61,25 @@ angular.module('SaveFormServices', [])
             console.log('Config:' + config);
           })
 
-        }
+        },
+		get: function (){
+		return $http({
+		method:'GET',
+		url:'api/getAllUserFormData'
+		
+		}).success(function (data, status, headers, config) {
+            console.log('DATA:'+ data);
+            console.log('status:'+status);
+            console.log('Header'+headers);
+            console.log('Config:'+config);
+			alert('DATA:' + data);
+			}).error(function (data, status, headers, config) {
+            console.log('DATA:' + data);
+            console.log('status:' + status);
+            console.log('Header' + headers);
+            console.log('Config:' + config);
+          })
+		}
       }
 
     });
@@ -64,6 +98,8 @@ angular.module('SaveFormServices', [])
 		console.log("$pristine = " + $scope.userForm.$pristine);
 		$scope.userForm.$setPristine();
           FormService.save($scope.user);
+		 //FormService.get();
+		//  FormService.get(); it should be a callback function!!!!!
 		 
         
           

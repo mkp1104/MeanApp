@@ -24,7 +24,7 @@ app.use(bodyParser());
 //app.use(app.router); 
   app.use(express.static(clientDir)); 
 
-var port = process.env.PORT || 8085; 		// set our port
+var port = process.env.PORT || 8084; 		// set our port
 
 // ROUTES FOR OUR API
 // =============================================================================
@@ -90,6 +90,7 @@ router.route('/userForm')
 	    if (err) 
       {
 	     res.send(err);
+		 console.error('POST-Error at Port:8084');
       }else{
 	    res.json({ message: 'UserFormData created!' });
       console.log('Console-log Info: Form submmited!!!');
@@ -98,11 +99,25 @@ router.route('/userForm')
 	  });
 
 	}).get(function(req, res) {
-		userFormData.find(function(err, userFormData) {
+		UserFormData.find(function(err, userData) {
 			if (err)
 				res.send(err);
 
-			res.json(userFormData);
+			res.json(userData);
+		});
+	});
+	
+	router.route('/getAllUserFormData')
+	.get(function(req, res) {
+		UserFormData.find(function(err, userData) {
+			if (err)
+			{
+				res.send(err);
+				 console.error('GET-Error at Port:8084');
+            }else{
+			res.json(userData);
+			  console.log('Console-log Info: GET Success at Port : 8084!!!');
+			}
 		});
 	});
 /* router.route('/bears/:bear_id')
@@ -148,7 +163,7 @@ router.route('/userForm')
   
 
 
-app.use('/', router);
+app.use('/api', router);
 
 // START THE SERVER
 

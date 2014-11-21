@@ -13,4 +13,4 @@ var FormDataSchema = new Schema({
   skillsReff2: [{interviewrating:{type:String,required:true},jrssrating:{type:String,required:true},name:{type:String,required:true}}]
 });
 
-module.exports = mongoose.model('UserFormDataModel', FormDataSchema);
+module.exports = mongoose.model('MeanAppData', FormDataSchema);
